@@ -1,0 +1,25 @@
+<% provide(:title, @hotel.title) %>
+
+<p> Title :  <%= @hotel.title %> </p>
+
+<p> Breakfast included:   
+<% if @hotel.breakfast == true then %>
+yes
+<% else %>
+no
+<%end%>
+</p>
+
+<p> Room description : <%= @hotel.description %> </p>
+
+<p> Price : <%= @hotel.price %> </p><br>
+
+<h4> Address: </h4>
+
+<p> Country : <%= @hotel.address.country %> </p>
+
+<p> State : <%= @hotel.address.state %> </p>
+
+<p> City : <%= @hotel.address.city %> </p>
+
+<p> Street : <%= @hotel.address.street %> </p>
