@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "addresses/create"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :hotels

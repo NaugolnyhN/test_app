@@ -2,12 +2,12 @@
 
 <p> Title :  <%= @hotel.title %> </p>
 
-<p> Breakfast included:   
+<p> Breakfast included:    <%= @hotel.breakfast %>
 <% if @hotel.breakfast == true then %>
 yes
 <% else %>
 no
-<%end%>
+<%end%> 
 </p>
 
 <p> Room description : <%= @hotel.description %> </p>
