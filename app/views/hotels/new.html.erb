@@ -1,6 +1,5 @@
 <% provide(:title, 'Add new hotel') %>
-
-   <%= form_for(@hotel) do |f| %>
+ <%= form_for(@hotel) do |f| %>
 
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -16,12 +15,11 @@
       <%= f.text_field :price %> 
 
       <%= f.label :description, "Room description" %>
-      <%= f.text_field :description %>    
- 
+      <%= f.text_field :description %>  
 
-      <%= fields_for @address, @hotel.address do |address| %>
+<%= fields_for(@hotel, @hotel.address_build) do |address| %>
 
-      <%= address.label :country, "Country" %>
+      <%= address.label :country %>
       <%= address.text_field :country  %> 
 
       <%= address.label :state %>
@@ -37,5 +35,6 @@
     
 
 <%= f.submit "Add hotel" %>
-<% end %>
-<% end %>
+      
+<%end%>
+<%end%>
