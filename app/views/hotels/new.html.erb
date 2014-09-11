@@ -1,5 +1,5 @@
 <% provide(:title, 'Add new hotel') %>
- <%= form_for(@hotel) do |f| %>
+ <%= form_for(@hotel, :html => { :multipart => true}) do |f| %>
 
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -17,7 +17,7 @@
       <%= f.label :description, "Room description" %>
       <%= f.text_field :description %>  
 
-<%= fields_for(@hotel, @hotel.address_build) do |address| %>
+<%= fields_for(@address) do |address| %>
 
       <%= address.label :country %>
       <%= address.text_field :country  %> 
@@ -31,10 +31,10 @@
       <%= address.label :street %>
       <%= address.text_field :street %> 
   
- 
-    
 
-<%= f.submit "Add hotel" %>
+    <%end%>
+<%= f.file_field :photo %>
+ 
       
-<%end%>
+<%= f.submit "Add hotel" %>
 <%end%>

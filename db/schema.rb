@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906133138) do
+ActiveRecord::Schema.define(version: 20140911174505) do
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20140906133138) do
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "users", force: true do |t|

@@ -1,5 +1,7 @@
 <% provide(:title, @hotel.title) %>
 
+<%= image_tag @hotel.photo.url %>
+
 <p> Title :  <%= @hotel.title %> </p>
 
 <p> Breakfast included:    <%= @hotel.breakfast %>
