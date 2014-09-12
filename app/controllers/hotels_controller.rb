@@ -2,11 +2,13 @@ class HotelsController < ApplicationController
 
 	def index
 		@hotels = Hotel.all
+		logger.debug @hotel
 	end
 
 	def new
 		@hotel = Hotel.new
         @address = Address.new
+        logger.debug @hotel
 
 	end
 	
@@ -30,7 +32,7 @@ class HotelsController < ApplicationController
   private 
 
     def hotel_params
-      params.require(:hotel).permit(:title, :breakfast, :price, :description,:photo)
+      params.require(:hotel).permit(:title, :breakfast, :price, :description,:photo, :raiting)
     end
     def address_params
       params.require(:address).permit(:country, :state, :city, :street, :hotel_id )

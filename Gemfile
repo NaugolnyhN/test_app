@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "paperclip", "~> 3.1"
 gem "cocaine", "0.5.4"
+gem 'jquery-star-rating-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
