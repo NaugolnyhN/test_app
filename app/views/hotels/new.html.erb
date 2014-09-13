@@ -35,15 +35,18 @@
     <%end%>
 
 
-<input name="hotel[raiting]" type="radio" class="star" checked="checked" value = "1"/>
-<input name="hotel[raiting]" type="radio" class="star" value = "2"/>
-<input name="hotel[raiting]" type="radio" class="star" value = "3"/>
-<input name="hotel[raiting]" type="radio" class="star" value = "4" />
-<input name="hotel[raiting]" type="radio" class="star" value = "5"/>
+<input name="rating[rating]" type="radio" class="star" value = "1"/>
+<input name="rating[rating]" type="radio" class="star" value = "2"/>
+<input name="rating[rating]" type="radio" class="star" value = "3"/>
+<input name="rating[rating]" type="radio" class="star" value = "4" />
+<input name="rating[rating]" type="radio" class="star" value = "5"/>
 
 
 <%= f.file_field :photo %>
- 
+
+
+<%= Hotel.find(params[:id]).user_id = session[:user] %>
+<%= @rating.user_id = session[:user] %>
       
 <%= f.submit "Add hotel" %>
 <%end%>

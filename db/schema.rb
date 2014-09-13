@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912164435) do
+ActiveRecord::Schema.define(version: 20140913131455) do
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -33,19 +33,17 @@ ActiveRecord::Schema.define(version: 20140912164435) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.integer  "raiting"
+    t.float    "rating"
+    t.integer  "voters"
   end
 
   create_table "ratings", force: true do |t|
-    t.integer  "comment_id"
+    t.integer  "rating"
+    t.integer  "hotel_id"
     t.integer  "user_id"
-    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "ratings", ["comment_id"], name: "index_ratings_on_comment_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

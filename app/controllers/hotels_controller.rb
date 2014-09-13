@@ -8,20 +8,22 @@ class HotelsController < ApplicationController
 	def new
 		@hotel = Hotel.new
         @address = Address.new
-        logger.debug @hotel
+        @rating = Rating.new
 
 	end
 	
 
 	def show
 		@hotel = Hotel.find(params[:id])
-		@address = Address.find(params[:id])
 		
 	end
 
 	  def create
+
     @hotel = Hotel.new(hotel_params)
+    #@hotel.rating = Rating.average("rating")
     @address = @hotel.build_address(address_params)
+    @rating = @hotel.rating.build(rating_params)
     if @hotel.save
       redirect_to @hotel
     else
@@ -32,9 +34,12 @@ class HotelsController < ApplicationController
   private 
 
     def hotel_params
-      params.require(:hotel).permit(:title, :breakfast, :price, :description,:photo, :raiting)
+      params.require(:hotel).permit(:title, :breakfast, :price, :description,:photo, :rating)
     end
     def address_params
       params.require(:address).permit(:country, :state, :city, :street, :hotel_id )
+    end
+    def rating_params
+      params.require(:rating).permit(:rating, :user_id, :hotel_id )
     end
 end

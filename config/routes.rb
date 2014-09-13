@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :hotels
   resources :addresses
+  resources :ratings
+
 
   root  'static_pages#home'
   match '/signin',  to: 'sessions#new',         via: 'get'
