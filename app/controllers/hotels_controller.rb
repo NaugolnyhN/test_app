@@ -21,9 +21,18 @@ class HotelsController < ApplicationController
 	  def create
 
     @hotel = Hotel.new(hotel_params)
-    #@hotel.rating = Rating.average("rating")
+     
+    @hotel.update(rating: 3.6)
+
+
     @address = @hotel.build_address(address_params)
+
     @rating = @hotel.rating.build(rating_params)
+    @rating.update(user_id: session[:user]) 
+
+    #@r = Rating.where("hotel_id = ?", params[:hotel_id] ).average("rating")
+    
+
     if @hotel.save
       redirect_to @hotel
     else
@@ -42,4 +51,6 @@ class HotelsController < ApplicationController
     def rating_params
       params.require(:rating).permit(:rating, :user_id, :hotel_id )
     end
+
+
 end

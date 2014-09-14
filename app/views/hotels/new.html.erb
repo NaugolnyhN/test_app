@@ -45,8 +45,8 @@
 <%= f.file_field :photo %>
 
 
-<%= Hotel.find(params[:id]).user_id = session[:user] %>
-<%= @rating.user_id = session[:user] %>
+
+<%= session[:hotel] = @hotel.id %>
       
 <%= f.submit "Add hotel" %>
 <%end%>
