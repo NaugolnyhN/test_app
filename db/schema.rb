@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20140913131455) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.float    "rating"
+    t.float    "rate"
     t.integer  "voters"
   end
 
   create_table "ratings", force: true do |t|
-    t.integer  "rating"
+    t.float    "rating"
     t.integer  "hotel_id"
     t.integer  "user_id"
     t.datetime "created_at"

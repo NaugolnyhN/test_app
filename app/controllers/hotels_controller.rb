@@ -21,16 +21,18 @@ class HotelsController < ApplicationController
 	  def create
 
     @hotel = Hotel.new(hotel_params)
-     
-    @hotel.update(rating: 3.6)
-
+    # Rails.logger.debug @hotel
+    # @hotel.inspect
+    #@hotel.update(rate: Rating.where("hotel_id = ?", params[:hotel_id] ).average("rating"))
+    #@hotel.rate = 3.5
 
     @address = @hotel.build_address(address_params)
 
     @rating = @hotel.rating.build(rating_params)
     @rating.update(user_id: session[:user]) 
 
-    #@r = Rating.where("hotel_id = ?", params[:hotel_id] ).average("rating")
+    @r = Rating.where("hotel_id = ?", params[:hotel_id] ).average(:rating).to_f
+    @hotel.update(rate: @r)
     
 
     if @hotel.save
