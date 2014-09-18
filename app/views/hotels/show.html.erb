@@ -1,5 +1,7 @@
 <% provide(:title, @hotel.title) %>
 
+
+
 <%= image_tag @hotel.photo.url %>
 
 <p> Title :  <%= @hotel.title %> </p>
@@ -26,6 +28,16 @@ no
 
 <p> Street : <%= @hotel.address.street %> </p>
 
-<p> Rating : <%= @r %> </p>
+<p> Rating : <%= @hotel.rate %> </p>
+
+
+
+<input name="rating[rating]" type="radio" class="star" value = "1"/>
+
+
+
+<% session[:hotel] = @hotel.id %>
+
+
 
 
