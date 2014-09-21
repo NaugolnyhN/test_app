@@ -1,8 +1,26 @@
 class HotelsController < ApplicationController
 
-def update
-
+def rating
+#@h_id = Hotel.find(params[:id]).id
+#@u_id = session[:user]
+#@hotel = Hotel.find(:id)
+#mean
+@hotel = Hotel.find(params[:hotel][:id])
+@rating = Rating.find_by(hotel_id: params[:hotel][:id], user_id: session[:user])
+if @rating == nil
+   @rating = @hotel.rating.build(user_id: session[:user])
 end
+@rating.update(rating: params[:rating])
+@hotel.update(rate: Rating.where("hotel_id = ?", params[:hotel][:id] ).average(:rating).to_f)
+ if @hotel.save
+      redirect_to @hotel
+      end
+end
+
+
+def update
+end
+  
 
 def mean
 @hotel.update(rate: Rating.where("hotel_id = ?", @hotel.id ).average(:rating).to_f)
@@ -25,6 +43,7 @@ end
 	def show
 		@hotel = Hotel.find(params[:id])
     mean
+    #rating
 	end
 
 	  def create

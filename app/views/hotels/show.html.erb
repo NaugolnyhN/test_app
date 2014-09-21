@@ -30,10 +30,18 @@ no
 
 <p> Rating : <%= @hotel.rate %> </p>
 
+<%= form_for(@hotel, :html => { :multipart => true}, :url => {:controller => "hotels", :action => "rating"}, method: "get") do |f| %>
+<input name="rating" type="radio" class="star" value = "1"/>
+<input name="rating" type="radio" class="star" value = "2"/>
+<input name="rating" type="radio" class="star" value = "3"/>
+<input name="rating" type="radio" class="star" value = "4" />
+<input name="rating" type="radio" class="star" value = "5"/>
+<%= f.hidden_field :id, :value => @hotel.id %>
 
+<%= f.submit "rate" %>
+<% end %>
 
-<input name="rating[rating]" type="radio" class="star" value = "1"/>
-
+<%= @id.inspect %>
 
 
 <% session[:hotel] = @hotel.id %>
